@@ -1,0 +1,10 @@
+#! /usr/bin/php
+
+<?php
+
+require('system/lib/cli.functions.php');
+
+$plugin = $argv[1];
+$script = $argv[2];
+
+require('plugins/'.$plugin.'/cli/'.$script.'.php');
