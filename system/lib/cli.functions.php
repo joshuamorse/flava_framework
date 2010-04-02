@@ -16,7 +16,7 @@ function color($str, $fg, $bg)
 {
   global $system;
 
-  require_once($system['dir']['lib']['class'] . 'colors.php');
+  require_once($_dir['system_lib'].'colors.class.php');
 
   $colors = new Colors();
 

@@ -3,72 +3,7 @@
 require('config/app.php');
 
 $_dir = array(
-  'js' => 'media/js/',
-  'css' => 'media/css/',
-  'module' => 'modules/',
-  'form' => 'form/',
-  'form_base' => 'form/base/',
-  'def' => 'definition/',
-  'def_ref' => 'system/lib/ref/definition/',
-  'action_ref' => 'system/lib/ref/module/action/',
-  'cli_scripts' => 'system/cli/scripts/',
-);
-
-$system = array(
-  'dir' => array(
-    'module' => 'modules/',
-    'db' => 'db/',
-    'def' => 'definition/',
-    'include' => 'include/',
-    'helper' => 'system/helper/',
-    'js' => 'media/js/',
-
-    'form' => array(
-      'index' => 'form/',
-      'root' => 'form/',
-      'base' => 'form/base/',
-    ),
-
-    'template' => array(
-      'index' => 'template/',
-      'form' => 'template/form/',
-    ),
-
-    'lib' => array(
-      'class' => 'system/lib/class/',
-
-      'ref' => array(
-        'index' => 'system/lib/ref/',
-        'def' => 'system/lib/ref/definition/',
-        'action' => 'system/lib/ref/module/action/',
-      ),
-    ),
-  ),
-
-  'file' => array(
-    'def' => array(
-      'index' => 'index.php',
-      'form' => 'form.php',
-    ),
-
-    'routes' => 'config/routes.php',
-  ),
-
-  'terms' => array(
-    'curr' => 'current',
-    'fwd' => 'forward',
-    'len' => 'length',
-    'pk' => 'primary key',
-    'ai' => 'auto increment',
-  ),
-
-  'error' => array(
-    'string' => 'is a required field.',
-    'url' => 'is a not a valid url.',
-    'word' => 'is a not a valid word.',
-    'number' => 'is a not a valid number.',
-    'phone' => 'is not a valid phone number.',
-  ),
+  'system_lib' => 'system/lib/',
 );
 
 $_log = array();

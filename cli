@@ -8,3 +8,15 @@ $plugin = $argv[1];
 $script = $argv[2];
 
 require('plugins/'.$plugin.'/cli/'.$script.'.php');
+
+if($success)
+{
+  success($success);
+}
+
+if($error)
+{
+  success($error);
+}
+
+echo "\n";
