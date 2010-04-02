@@ -16,7 +16,7 @@ if($success)
 
 if($error)
 {
-  success($error);
+  error($error);
 }
 
 echo "\n";

@@ -2,8 +2,9 @@
 
 if(run('mkdir definitions'))
 {
-  if(run('mv plugins/definitions/lib/definition.php.example definitions/'))
+  if(run('cp plugins/definitions/lib/definition.php.example definitions/'))
   {
+    run('touch plugins/.installed/.definitions');
     $success = 'definitions was successfully installed!';
   }
 }

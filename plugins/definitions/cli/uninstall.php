@@ -2,6 +2,7 @@
 
 if(run('rm -rf definitions'))
 {
+  run('rm plugins/.installed/.definitions');
   $success = 'definitions was successfully uninstalled!';
 }
 else
