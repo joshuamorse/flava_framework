@@ -2,7 +2,37 @@
 
 <?php
 
-require('system/lib/cli.functions.php');
+require('lib/system.config.php');
+require('lib/system.functions.php');
+require('lib/cli.functions.php');
+
+#autoload plugin configs
+$dhandle = opendir(DIR_PLUGINS);
+
+if($dhandle)
+{
+   while(false !== ($fname = readdir($dhandle)))
+   {
+      if(!preg_match('/\./', $fname) && ($fname != basename($_SERVER['PHP_SELF'])))
+      {
+        $plugins[] = $fname;
+      }
+   }
+
+   closedir($dhandle);
+} 
+
+foreach($plugins as $plugin)
+{
+  $file = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.config.php';
+
+  if(file_exists($file))
+  {
+    require($file);
+  }
+}
+
+unset($plugin);
 
 $plugin = $argv[1];
 $script = $argv[2];

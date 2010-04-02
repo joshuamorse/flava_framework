@@ -1,6 +1,8 @@
 <?php
 
-if(run('mkdir definitions'))
+require(DIR_PLUGINS.'definitions/lib/definitions.config.php');
+
+if(run('mkdir '.DIR_DEFINITIONS))
 {
   if(run('cp plugins/definitions/lib/definition.php.example definitions/'))
   {

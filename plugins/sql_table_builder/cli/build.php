@@ -9,8 +9,8 @@ if(isset($argv[2]))
   use_db();
 
   # Fetch the requested table definition and its fixtures.
-  require($system['dir']['def'] . $argv[2] . '/index.php');
-  require($system['dir']['def'] . $argv[2] . '/fixtures.php');
+  require(DIR_DEFINITIONS.$argv[3].'.definition.php');
+  //require($system['dir']['def'] . $argv[2] . '/fixtures.php');
 
   if(isset($_definition))
   { 
@@ -82,23 +82,23 @@ if(isset($argv[2]))
       $error = mysql_error();
     }
 
-    if(isset($fixtures))
-    {
-      # Load fixtures;
-      foreach ($fixtures as $fixture)
-      {
-        $query = '
-          INSERT INTO ' . $_definition['name'] . ' (' . implode(',', array_keys($fixture)) .')
-          VALUES (' . implode(',', array_values(enquote($fixture))) . ')
-        ';
+    //if(isset($fixtures))
+    //{
+      //# Load fixtures;
+      //foreach ($fixtures as $fixture)
+      //{
+        //$query = '
+          //INSERT INTO ' . $_definition['name'] . ' (' . implode(',', array_keys($fixture)) .')
+          //VALUES (' . implode(',', array_values(enquote($fixture))) . ')
+        //';
 
-        if(mysql_query($query)) {
-          $success = 'Created "' . $_definition['name'] . '" and loaded its fixtures!';
-        } else {
-          $error = mysql_error();
-        }
-      }
-    }
+        //if(mysql_query($query)) {
+          //$success = 'Created "' . $_definition['name'] . '" and loaded its fixtures!';
+        //} else {
+          //$error = mysql_error();
+        //}
+      //}
+    //}
   }
   else
   {

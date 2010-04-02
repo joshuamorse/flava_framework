@@ -1,6 +1,6 @@
 <?php
 
-require('config.php');
+require('lib/system.functions.php');
 require('config/routes.php');
 require('config/app.php');
 require('config/user.php');
