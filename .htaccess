@@ -1,0 +1,18 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+# default splash route
+#RewriteRule ^.*$ index.php [L]
+RewriteRule ^[^(\/media\/)] index.php
+
+# default module route
+#RewriteRule ^\/test\/blah\/([a-z]+)$ index.php?module=test&action=blah [L]
+
+# default module route
+#RewriteRule ^([a-z0-9_]+)$ system/module_controller.php?module=$1&action=index [L]
+
+# default module route with action
+#RewriteRule ^([a-z0-9_]+)/([a-z_]+)$ system/module_controller?module=$1&action=$2 [L]
+
+# default module route with action and parameters
+#RewriteRule ^([a-z0-9_]+)/([a-z_]+)/([a-zA-Z0-9/]+)$ system/module_controller?module=$1&action=$2&params=$3 [L]
