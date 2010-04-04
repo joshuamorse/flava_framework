@@ -243,3 +243,35 @@ function use_js($js, $in_a_module = 0) {
   # Echo out the include string.
   echo '<script type="text/javascript" src="' . $src . $js . '.js"></script>';
 }
+
+function autoload_plugin_functions()
+{
+  # this will autoload all installed plugin functions.
+  $dhandle = opendir(DIR_PLUGINS);
+
+  if($dhandle)
+  {
+    while(false !== ($fname = readdir($dhandle)))
+    {
+      if(file_exists(DIR_INSTALLED.'.'.$fname))
+      {
+        if(!preg_match('/\./', $fname) && ($fname != basename($_SERVER['PHP_SELF'])))
+        {
+          $plugins[] = $fname;
+        }
+      }
+    }
+
+  closedir($dhandle);
+  } 
+
+  foreach($plugins as $plugin)
+  {
+  $file = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.config.php';
+
+  if(file_exists($file))
+  {
+  require($file);
+  }
+  }
+}

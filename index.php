@@ -1,5 +1,6 @@
 <?php
 
+require('lib/system.config.php');
 require('lib/system.functions.php');
 require('user/config/routes.php');
 require('user/config/app.php');
@@ -86,8 +87,11 @@ foreach($_routes as $_route)
 # If we have a route match, let's continue to render that route
 if($_url_match)
 {
+  # Load up any installed plugin functions;
+  autoload_plugin_functions();
+
   # Let's set our $_target var here.
-  $_target = $_dir['module'];
+  $_target = DIR_MODS;
 
   # Define our module.
   if($_module)
@@ -102,15 +106,15 @@ if($_url_match)
   # Define our action.
   if($_action)
   {
-    $_target .= '/' . $_action;
+    $_target .= '/'.$_action;
   }
   else
   {
-    $_target .= '/' . $_route['target']['action'];
+    $_target .= '/'.$_route['target']['action'];
   }
 
   # Fetch the logic.
-  include($_target . '/logic.php');
+  include($_target.'/logic.php');
 
   # Init the content var.
   $content = '';
@@ -141,4 +145,4 @@ else
   fwd_404();
 }
 
-pre($_log);
+//pre($_log);
