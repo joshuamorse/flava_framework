@@ -244,7 +244,7 @@ function use_js($js, $in_a_module = 0) {
   echo '<script type="text/javascript" src="' . $src . $js . '.js"></script>';
 }
 
-function autoload_plugin_functions()
+function autoload_plugin_assets()
 {
   # this will autoload all installed plugin functions.
   $dhandle = opendir(DIR_PLUGINS);
@@ -267,11 +267,20 @@ function autoload_plugin_functions()
 
   foreach($plugins as $plugin)
   {
-  $file = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.config.php';
+    $file = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.config.php';
 
-  if(file_exists($file))
-  {
-  require($file);
-  }
+    if(file_exists($file))
+    {
+      require($file);
+    }
+
+    unset($file);
+
+    $file = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.functions.php';
+
+    if(file_exists($file))
+    {
+      require($file);
+    }
   }
 }

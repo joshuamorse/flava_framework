@@ -87,8 +87,8 @@ foreach($_routes as $_route)
 # If we have a route match, let's continue to render that route
 if($_url_match)
 {
-  # Load up any installed plugin functions;
-  autoload_plugin_functions();
+  # Load up any installed plugin functions.
+  autoload_plugin_assets();
 
   # Let's set our $_target var here.
   $_target = DIR_MODS;

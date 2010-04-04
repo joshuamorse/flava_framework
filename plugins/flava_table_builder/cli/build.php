@@ -2,8 +2,6 @@
 
 # Builds a SQL table!
 
-require('plugins/flava_table_builder/lib/flava_table_builder.functions.php');
-
 if(dependencies_met())
 {
   # Let's get connected!
