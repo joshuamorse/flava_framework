@@ -1,6 +1,6 @@
 <?php
 
-require('config/app.php');
+require('user/config/app.php');
 
 $_dir = array(
   'system_lib' => 'system/lib/',

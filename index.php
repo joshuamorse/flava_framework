@@ -1,9 +1,9 @@
 <?php
 
 require('lib/system.functions.php');
-require('config/routes.php');
-require('config/app.php');
-require('config/user.php');
+require('user/config/routes.php');
+require('user/config/app.php');
+require('user/config/user.php');
 
 # Define an array for controller's vars.
 $_controller = array();

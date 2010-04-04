@@ -4,9 +4,9 @@ require(DIR_PLUGINS.'definitions/lib/definitions.config.php');
 
 if(run('mkdir '.DIR_DEFINITIONS))
 {
-  if(run('cp plugins/definitions/lib/definition.php.example definitions/'))
+  if(run('cp -r '.DIR_PLUGINS.'definitions/lib/definition.php.example '.DIR_DEFINITIONS))
   {
-    run('touch plugins/.installed/.definitions');
+    run('touch '.DIR_INSTALLED.'.definitions');
     $success = 'definitions was successfully installed!';
   }
 }

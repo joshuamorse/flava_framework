@@ -1,8 +1,8 @@
 <?php
 
-if(run('rm -rf definitions'))
+if(run('rm -rf '.DIR_DEFINITIONS))
 {
-  run('rm plugins/.installed/.definitions');
+  run('rm '.DIR_INSTALLED.'.definitions');
   $success = 'definitions was successfully uninstalled!';
 }
 else

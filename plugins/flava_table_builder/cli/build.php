@@ -2,7 +2,9 @@
 
 # Builds a SQL table!
 
-if(isset($argv[2]))
+require('plugins/flava_table_builder/lib/flava_table_builder.functions.php');
+
+if(dependencies_met())
 {
   # Let's get connected!
   db_connect();
@@ -107,5 +109,5 @@ if(isset($argv[2]))
 }
 else
 {
-  $error = 'learn to use this crap!';
+  $error = 'Dependencies not met! Make sure you have this plugin, alongside definitions installed!';
 }
