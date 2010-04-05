@@ -6,7 +6,7 @@ require('lib/system.config.php');
 require('lib/system.functions.php');
 require('lib/cli.functions.php');
 
-autoload_plugin_assets();
+autoload_all_plugin_assets();
 
 $plugin = $argv[1];
 $script = $argv[2];
