@@ -246,41 +246,59 @@ function use_js($js, $in_a_module = 0) {
 
 function autoload_plugin_assets()
 {
-  # this will autoload all installed plugin functions.
-  $dhandle = opendir(DIR_PLUGINS);
+  require_once(DIR_USER_CONFIG.'autoload.php');
 
-  if($dhandle)
+  foreach($_autoload as $plugin)
   {
-    while(false !== ($fname = readdir($dhandle)))
+    $functions = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.config.php';
+    $config = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.functions.php';
+
+    if(file_exists($config))
     {
-      if(file_exists(DIR_INSTALLED.'.'.$fname))
-      {
-        if(!preg_match('/\./', $fname) && ($fname != basename($_SERVER['PHP_SELF'])))
-        {
-          $plugins[] = $fname;
-        }
-      }
+      require($config);
     }
 
-  closedir($dhandle);
-  } 
-
-  foreach($plugins as $plugin)
-  {
-    $file = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.config.php';
-
-    if(file_exists($file))
+    if(file_exists($functions))
     {
-      require($file);
-    }
-
-    unset($file);
-
-    $file = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.functions.php';
-
-    if(file_exists($file))
-    {
-      require($file);
+      require($functions);
     }
   }
+
+  # this will autoload all installed plugin functions.
+  //$dhandle = opendir(DIR_PLUGINS);
+
+  //if($dhandle)
+  //{
+    //while(false !== ($fname = readdir($dhandle)))
+    //{
+      //if(file_exists(DIR_INSTALLED.'.'.$fname))
+      //{
+        //if(!preg_match('/\./', $fname) && ($fname != basename($_SERVER['PHP_SELF'])))
+        //{
+          //$plugins[] = $fname;
+        //}
+      //}
+    //}
+
+  //closedir($dhandle);
+  //} 
+
+  //foreach($plugins as $plugin)
+  //{
+    //$file = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.config.php';
+
+    //if(file_exists($file))
+    //{
+      //require($file);
+    //}
+
+    //unset($file);
+
+    //$file = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.functions.php';
+
+    //if(file_exists($file))
+    //{
+      //require($file);
+    //}
+  //}
 }
