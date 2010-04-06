@@ -72,7 +72,6 @@ foreach($_routes as $_route)
           $_url_match = 1;
         }
       }
-
     }
   } 
 
@@ -128,12 +127,13 @@ if($_url_match)
   $_content .= ob_get_clean();
 
   # If a template was specificied, we'll include that, otherwise, we'll just render the content.
-  if(isset($_action['template']))
-  {
-    log_me('The following template was specified in the action -- '.$_action['template']);
-
-    require('template/'.$_action['template'].'.php');
-  }
+  # pre content hooks?
+  //if($pre_content_hooks)
+  //{
+    //// pre-content hooks go here
+    ////log_me('The following template was specified in the action -- '.$_action['template']);
+    ////require('template/'.$_action['template'].'.php');
+  //}
   else
   {
     echo $_content;
