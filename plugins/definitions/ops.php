@@ -1,15 +1,5 @@
 <?php
 
-$errors = array(
-  'installed' => $_plugin['name'].' is already installed',
-  'not_installed' => $_plugin['name'].' is not installed',
-  'create_dir' => 'error creating '.$_plugin['dir']['definitions'],
-  'delete_dir' => 'error deleting '.$_plugin['dir']['definitions'],
-  'example' => 'error copying example file/s',
-  'installing' => 'error installing '.$_plugin['name'],
-  'uninstalling' => 'error uninstalling '.$_plugin['name'],
-);
-
 function install()
 {
   global $_plugin;

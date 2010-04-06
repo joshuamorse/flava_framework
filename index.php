@@ -2,6 +2,7 @@
 
 require('lib/system.config.php');
 require('lib/system.functions.php');
+require('lib/plugins.functions.php');
 require('user/config/routes.php');
 require('user/config/app.php');
 require('user/config/user.php');
@@ -87,7 +88,12 @@ foreach($_routes as $_route)
 if($_url_match)
 {
   # Load up any installed plugin functions.
-  autoload_select_plugin_assets();
+  $_list = get_autoload_list();
+
+  foreach($_list as $_plugin)
+  {
+    require($_plugin['functions']);
+  }
 
   # Let's set our $_target var here.
   $_target = DIR_MODS;
@@ -134,10 +140,10 @@ if($_url_match)
     ////log_me('The following template was specified in the action -- '.$_action['template']);
     ////require('template/'.$_action['template'].'.php');
   //}
-  else
-  {
+  //else
+  //{
     echo $_content;
-  }
+  //}
 }
 else
 {

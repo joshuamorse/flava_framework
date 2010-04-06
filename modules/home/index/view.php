@@ -1,1 +1,5 @@
-<div>testing out autoload, here is definitions dir: <?php echo $dir ?></div>
+<div>testing out autoload</div>
+
+<div>
+  <?php pre(get_definition_for('example')) ?>
+</div>

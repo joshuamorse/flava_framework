@@ -18,25 +18,21 @@ function copy_example($example, $dest)
   return run('cp '.DIR_PLUGINS.$_plugin['name'].'/lib/'.$example.'.php '.$dest);
 }
 
-function autoload_select_plugin_assets()
+function get_autoload_list()
 {
   require_once(DIR_USER_CONFIG.'autoload.php');
 
+  $list = array();
+
   foreach($_autoload as $plugin)
   {
-    $functions = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.config.php';
-    $config = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.functions.php'; 
-
-    if(file_exists($config))
-    {
-      require($config);
-    }
-
-    if(file_exists($functions))
-    {
-      require($functions);
-    }
+    $list[] = array(
+      'config' => DIR_PLUGINS.$plugin.'/lib/config.php',
+      'functions' => DIR_PLUGINS.$plugin.'/lib/functions.php',
+    );
   }
+
+  return $list;
 }
 
 function plugin_is_installed($plugin)
