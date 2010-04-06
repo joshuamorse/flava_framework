@@ -2,10 +2,6 @@
 
 require('user/config/app.php');
 
-$_dir = array(
-  'system_lib' => 'system/lib/',
-);
-
 $_log = array();
 
 function log_me($str)
@@ -88,7 +84,8 @@ function use_db()
 
 function enquote($arr)
 {
-  foreach($arr as $key => $val) {
+  foreach($arr as $key => $val)
+  {
     $arr[$key] = '"' . $val . '"';
   }
 
@@ -122,7 +119,9 @@ function autoload_select_plugin_assets()
   {
     $functions = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.config.php';
     $config = DIR_PLUGINS.$plugin.'/lib/'.$plugin.'.functions.php'; 
-    if(file_exists($config)) {
+
+    if(file_exists($config))
+    {
       require($config);
     }
 
