@@ -5,6 +5,12 @@ function create_dir($dir)
   return run('mkdir '.$dir);
 }
 
+function delete_dir($dir)
+{
+  # prompt here?
+  return run('rm -rf '.$dir);
+}
+
 function copy_example($example, $dest)
 {
   global $_plugin;
@@ -35,7 +41,6 @@ function autoload_select_plugin_assets()
 
 function plugin_is_installed($plugin)
 {
-  echo file_exists(DIR_INSTALLED.'.'.$plugin);
   return file_exists(DIR_INSTALLED.'.'.$plugin);
 }
 
@@ -44,4 +49,11 @@ function set_as_installed()
   global $_plugin;
 
   return run('touch '.DIR_INSTALLED.'.'.$_plugin['name']);
+}
+
+function set_as_uninstalled()
+{
+  global $_plugin;
+
+  return run('rm '.DIR_INSTALLED.'.'.$_plugin['name']);
 }
