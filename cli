@@ -5,20 +5,42 @@
 require('lib/system.config.php');
 require('lib/system.functions.php');
 require('lib/cli.functions.php');
+require('lib/plugins.functions.php');
 
-autoload_all_plugin_assets();
-
+# set the plugin var.
 $plugin = $argv[1];
-$script = $argv[2];
 
-require('plugins/'.$plugin.'/cli/'.$script.'.php');
+# require the plugin config and functions.
+$config = DIR_PLUGINS.$plugin.'/lib/config.php';
+$functions = DIR_PLUGINS.$plugin.'/lib/functions.php';
 
-if($success)
+if(file_exists($config))
 {
-  success($success);
+  require($config);
 }
 
-if($error)
+if(file_exists($functions))
+{
+  require($functions);
+}
+
+# require the plugin ops file.
+require_once('plugins/'.$plugin.'/ops.php');
+
+# set the action var.
+$action = $argv[2];
+
+# call the action.
+call_user_func($action);
+
+if(!$error)
+{
+  if($success)
+  {
+    success($success);
+  }
+}
+else
 {
   error($error);
 }
