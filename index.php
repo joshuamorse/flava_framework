@@ -124,26 +124,20 @@ if($_url_match)
   # Init the content var.
   $content = '';
 
-  # Unset the $_action var, as the action will now use it.
-  unset($_action);
-
   # Fetch the view.
   ob_start();
     include($_target.'/view.php');
   $_content .= ob_get_clean();
 
   # If a template was specificied, we'll include that, otherwise, we'll just render the content.
-  # pre content hooks?
-  //if($pre_content_hooks)
-  //{
-    //// pre-content hooks go here
-    ////log_me('The following template was specified in the action -- '.$_action['template']);
-    ////require('template/'.$_action['template'].'.php');
-  //}
-  //else
-  //{
+  if(isset($_action['template']))
+  {
+    require(DIR_TEMPLATES.$_action['template'].'.php');
+  }
+  else
+  {
     echo $_content;
-  //}
+  }
 }
 else
 {

@@ -1,3 +1,5 @@
 <?php
 
-$dir = DIR_DEFINITIONS;
+$_action = array(
+  'template' => 'default',
+);
