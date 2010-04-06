@@ -90,9 +90,17 @@ if($_url_match)
   # Load up any installed plugin functions.
   $_list = get_autoload_list();
 
-  foreach($_list as $_plugin)
+  foreach($_list as $_plugin_)
   {
-    require($_plugin['functions']);
+    if($_plugin_['config'])
+    {
+      require($_plugin_['config']);
+    }   
+
+    if($_plugin_['functions'])
+    {
+      require($_plugin_['functions']);
+    }
   }
 
   # Let's set our $_target var here.

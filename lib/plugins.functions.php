@@ -5,6 +5,36 @@ function create_dir($dir)
   return run('mkdir '.$dir);
 }
 
+function create_dirs($dirs)
+{
+  $rtn = 1;
+
+  foreach($dirs as $dir)
+  {
+    if(!create_dir($dir))
+    {
+      $rtn = 0;
+    }
+  }
+
+  return $rtn;
+}
+
+function delete_dirs($dirs)
+{
+  $rtn = 1;
+
+  foreach($dirs as $dir)
+  {
+    if(!delete_dir($dir))
+    {
+      $rtn = 0;
+    }
+  }
+
+  return $rtn;
+}
+
 function delete_dir($dir)
 {
   # prompt here?
