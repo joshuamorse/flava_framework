@@ -41,6 +41,12 @@ function build()
   db_connect();
   use_db();
 
+  # Get definition config.
+  $_definition = get_plugin_config('definitions');
+
+  print_r($_definition);
+  die();
+
   # Fetch the requested table definition and its fixtures.
   require(DIR_DEFINITIONS.$argv[3].'.definition.php');
 

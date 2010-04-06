@@ -11,6 +11,13 @@ function delete_dir($dir)
   return run('rm -rf '.$dir);
 }
 
+function get_plugin_config($plugin)
+{
+  require(DIR_PLUGINS.$plugin.'/lib/config.php');
+
+  return $_plugin;
+}
+
 function copy_example($example, $dest)
 {
   global $_plugin;
