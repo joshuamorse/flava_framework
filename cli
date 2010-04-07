@@ -42,8 +42,8 @@ require_once('plugins/'.$plugin.'/ops.php');
 # set the action var.
 $action = $argv[2];
 
-# call the action.
-call_user_func($action);
+# call the action and pass $argv.
+call_user_func($action, $argv);
 
 if(!$error)
 {

@@ -1,6 +1,8 @@
 <?php
 
-function install()
+$errors['usage'] = 'Usage: [ build/install/uninstall ] [ definition ]';
+
+function install($argv)
 {
   global $_plugin;
   global $success;
@@ -16,7 +18,7 @@ function install()
   $success = $_plugin['name'].' was successfully installed';
 }
 
-function uninstall()
+function uninstall($argv)
 {
   global $_plugin;
   global $success;
@@ -32,26 +34,34 @@ function uninstall()
   $success = $_plugin['name'].' was successfully uninstalled';
 }
 
-function build()
+function build($argv)
 {
+  global $_plugin;
+  global $success;
+  global $error;
+  global $errors;
+
   plugin_is_installed($_plugin['name'])
     or $error = $error['not_installed'];
-  
-  # Let's get connected!
-  db_connect();
-  use_db();
 
-  # Get definition config.
-  $_definition = get_plugin_config('definitions');
+  isset($argv[3])
+    or $error = $errors['usage'];
 
-  print_r($_definition);
-  die();
+  prompt('WARNING: Building a table from a definition will clear all data from your table; are you sure you want to do this?')
+    or $error = 'nathan';
 
-  # Fetch the requested table definition and its fixtures.
-  require(DIR_DEFINITIONS.$argv[3].'.definition.php');
+  if(!$error)
+  {
+    # Let's get connected!
+    db_connect();
+    use_db();
 
-  if(isset($_definition))
-  { 
+    # Get definition config.
+    $_definition = get_plugin_config('definitions');
+
+    # Fetch the requested table definition and its fixtures.
+    require($_definition['dir']['definitions'].$argv[3].'.php');
+
     # Drop the current table. Should really be its own script, no?
     # Check for table existence.
     if(mysql_query('SELECT * FROM ' . $_definition['name']))
@@ -85,7 +95,6 @@ function build()
       # Add a comma and line break.
       $query .= ",\n";
 
-
       # Output relational data.
       if(isset($data['relation']))
       {
@@ -97,7 +106,6 @@ function build()
 
     if($_definition['primary'])
     {
-      //$query .= ",\n" . 'PRIMARY KEY(' . $_definition['primary'] .')';
       $query .= 'PRIMARY KEY(' . $_definition['primary'] .')';
     }
 
@@ -105,10 +113,7 @@ function build()
     $query .= "\n" . ')';
 
     //add option to display this!
-    //echo "\n";
-    //echo $query;
-    //echo "\n";
-    //echo "\n";
+    echo 'Executing the following query:'."\n".$query."\n\n";
 
     if(mysql_query($query))
     {
@@ -119,9 +124,5 @@ function build()
     {
       $error = mysql_error();
     }
-  }
-  else
-  {
-    skip($argv[2]);
   }
 }
