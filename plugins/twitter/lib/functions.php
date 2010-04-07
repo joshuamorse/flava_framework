@@ -1,4 +1,11 @@
 <?php
+/**
+ * Fixtures Plugin
+ * 
+ * this plugin bla bla bla
+ * 
+ * @author     Joshua Morse <dashvibe@gmail.com>
+ */
 
 function get_twitter_feed($id)
 {
@@ -7,8 +14,6 @@ function get_twitter_feed($id)
   $feed = new SimpleXmlElement($feed);
 
   return $feed;
-
-  
 }
 
 function get_twitter_feed_list($id, $max_tweets = NULL)

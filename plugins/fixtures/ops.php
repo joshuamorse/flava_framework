@@ -1,4 +1,11 @@
 <?php
+/**
+ * Fixtures Plugin
+ * 
+ * this plugin bla bla bla
+ * 
+ * @author     Joshua Morse <dashvibe@gmail.com>
+ */
 
 function install()
 {
