@@ -48,7 +48,7 @@ function build($argv)
     or $error = $errors['usage'];
 
   prompt('WARNING: Building a table from a definition will clear all data from your table; are you sure you want to do this?')
-    or $error = 'nathan';
+    or $error = $errors['aborted'];
 
   if(!$error)
   {
@@ -70,16 +70,16 @@ function build($argv)
     }
 
     # Let's build this noise!
-    $query  = 'CREATE TABLE ' . $_definition['name'] . '(' . "\n"; 
+    $query = 'CREATE TABLE '.$_definition['name'].'('."\n"; 
 
     # We'll foreach through the table def and build the SQL string as needed.
-    foreach ($_definition['fields'] as $field => $data)
+    foreach($_definition['fields'] as $field => $data)
     {
-      $query .= $field . ' ' . strtoupper($data['type']);
+      $query .= $field.' '.strtoupper($data['type']);
       
       if($data['length'])
       {
-        $query .= '(' . $data['length'] . ')';
+        $query .= '('.$data['length'].')';
       }
       
       if(!$data['null'])
@@ -106,11 +106,11 @@ function build($argv)
 
     if($_definition['primary'])
     {
-      $query .= 'PRIMARY KEY(' . $_definition['primary'] .')';
+      $query .= 'PRIMARY KEY('.$_definition['primary'].')';
     }
 
     # End query here.
-    $query .= "\n" . ')';
+    $query .= "\n".')';
 
     //add option to display this!
     echo 'Executing the following query:'."\n".$query."\n\n";
@@ -118,7 +118,7 @@ function build($argv)
     if(mysql_query($query))
     {
       //$success = 'Created ' . $_definition['name'] . ' with the following query: ' . "\n" . $query;
-      $success = 'Created "' . $_definition['name'] . '"';
+      $success = 'Created "'.$_definition['name'].'"';
     }
     else
     {

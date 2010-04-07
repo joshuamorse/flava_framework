@@ -34,6 +34,7 @@ $errors = array(
   'example' => 'error copying example file/s',
   'installing' => 'error installing '.$_plugin['name'],
   'uninstalling' => 'error uninstalling '.$_plugin['name'],
+  'aborted' => 'aborted...',
 );
 
 # require the plugin ops file.
