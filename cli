@@ -34,6 +34,7 @@ $errors = array(
   'example' => 'error copying example file/s',
   'installing' => 'error installing '.$_plugin['name'],
   'uninstalling' => 'error uninstalling '.$_plugin['name'],
+  'aborted' => 'aborted...',
 );
 
 # require the plugin ops file.
@@ -42,10 +43,11 @@ require_once('plugins/'.$plugin.'/ops.php');
 # set the action var.
 $action = $argv[2];
 
+<<<<<<< HEAD:cli
 # if action = uninstall, add prompt (are you sure?)
 
-# call the action.
-call_user_func($action);
+# call the action and pass $argv.
+call_user_func($action, $argv);
 
 if(!$error)
 {

@@ -90,3 +90,20 @@ function set_as_uninstalled()
 
   return run('rm '.DIR_INSTALLED.'.'.$_plugin['name']);
 }
+
+function prompt($msg = NULL)
+{
+  if(!$msg)
+  {
+    $msg = 'Are you sure?';
+  }
+
+  $msg .= ' (y/N)'."\n";
+
+  echo $msg; # display the message
+
+  $handle = fopen('php://stdin', 'r');
+  $line = fgets($handle);
+
+  return trim($line) == 'y';
+}
