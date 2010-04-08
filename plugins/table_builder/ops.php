@@ -59,7 +59,7 @@ function build($argv)
     # Get definition config.
     $_definition = get_plugin_config('definitions');
 
-    # Fetch the requested table definition and its fixtures.
+    # At this point, $_definition is overwritten with the defined $_definition in the require.
     require($_definition['dir']['definitions'].$argv[3].'.php');
 
     # Drop the current table. Should really be its own script, no?
