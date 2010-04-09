@@ -7,8 +7,17 @@ require('lib/system.functions.php');
 require('lib/cli.functions.php');
 require('lib/plugins.functions.php');
 
-# set the plugin var.
-$plugin = $argv[1];
+# add standard actions here
+if(($argv[1] == 'install' || $argv[1] == 'uninstall') && isset($argv[2]))
+{
+  $action = $argv[1];
+  $plugin = $argv[2];
+}
+else
+{
+  $plugin = $argv[1];
+  $action = $argv[2];
+}
 
 # require the plugin config and functions.
 $config = DIR_PLUGINS.$plugin.'/lib/config.php';
@@ -39,9 +48,6 @@ $errors = array(
 
 # require the plugin ops file.
 require_once('plugins/'.$plugin.'/ops.php');
-
-# set the action var.
-$action = $argv[2];
 
 # if action = uninstall, add prompt (are you sure?)
 

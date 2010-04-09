@@ -6,7 +6,6 @@ $_definition = array(
   'primary' => 'id',
 
   'fields' => array(
-
     'id' => array(
       'type' => 'int',
       'auto_inc' => 1,
@@ -31,31 +30,23 @@ $_definition = array(
     ),
 
     'name' => array(
-      'label' => 'Name',
       'type' => 'varchar',
       'length' => 255,
-      'validation' => 'string',
     ),
 
     'location' => array(
-      'label' => 'Location',
       'type' => 'varchar',
       'length' => 255,
-      'validation' => 'string',
     ),
 
     'url' => array(
-      'label' => 'Homepage',
       'type' => 'varchar',
       'length' => 255,
-      'validation' => 'url',
     ),
 
     'bla' => array(
-      'label' => 'Bla',
       'type' => 'varchar',
       'length' => 255,
-      'validation' => 'phone',
     ),
   ),
 );
