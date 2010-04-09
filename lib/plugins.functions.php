@@ -48,6 +48,11 @@ function get_plugin_config($plugin)
   return $_plugin;
 }
 
+function get_plugin_functions_path_for($plugin)
+{
+  return DIR_PLUGINS.$plugin.'/lib/functions.php';
+}
+
 function copy_example($example, $dest)
 {
   global $_plugin;
