@@ -126,6 +126,9 @@ if($_url_match)
     $_target .= '/'.$_route['target']['action'];
   }
 
+  # Unset action.
+  unset($_action);
+
   # Fetch the logic.
   include($_target.'/logic.php');
 
