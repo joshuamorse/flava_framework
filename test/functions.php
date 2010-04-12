@@ -9,8 +9,10 @@ use_db();
 
 $user = new user_base(1);
 
-echo $user->get_name();
+//echo $user->get_name();
 
-$clan = $user->get_clan();
-print_r($clan);
-//echo $song->get_album()."\n\n";
+echo "\n\n";
+echo $user->get_clan()->name;
+echo "\n\n";
+//print_r($clan);
+//echo $clan->name;
