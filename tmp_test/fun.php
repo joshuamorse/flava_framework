@@ -2,13 +2,15 @@
 
 require('lib/system.config.php');
 require('lib/system.functions.php');
-require('tmp_test/test.php');
+require('user/plugins/functions/base/user.php');
 
 db_connect();
 use_db();
 
-$song = new song_base(23);
+$user = new user_base(1);
 
-$album = $song->get_album();
-print_r($album);
+echo $user->get_name();
+
+$clan = $user->get_clan();
+print_r($clan);
 //echo $song->get_album()."\n\n";
