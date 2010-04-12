@@ -26,8 +26,6 @@ $_definition = array(
     ),
 
     'comments' => array(
-      'type' => 'int',
-
       'relation' => array(
         'type' => 'one-to-many',
         'foreign' => array(
@@ -37,18 +35,15 @@ $_definition = array(
       ),
     ),
 
-    //'song_id' => array(
-      //'type' => 'int',
-
-      //'relation' => array(
-        //'type' => 'many-to-many',
-        //'name' => 'songs',
-        //'foreign' => array(
-          //'table' => 'user2song', 
-          //'field' => 'song_id', 
-        //),
-      //),
-    //),
+    'songs' => array(
+      'relation' => array(
+        'type' => 'many-to-many',
+        'foreign' => array(
+          'table' => 'user2song', 
+          'field' => 'song_id', 
+        ),
+      ),
+    ),
     
     'name' => array(
       'field' => 'name',

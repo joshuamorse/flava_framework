@@ -3,8 +3,6 @@
 class user_base
 {
 	private $id;
-	private $clan_id;
-	private $comment_id;
 	private $name;
 	private $location;
 
@@ -34,16 +32,6 @@ class user_base
 		return $this->id;
 	}
 
-	public function get_clan_id()
-	{
-		return $this->clan_id;
-	}
-
-	public function get_comment_id()
-	{
-		return $this->comment_id;
-	}
-
 	public function get_name()
 	{
 		return $this->name;
@@ -60,9 +48,9 @@ class user_base
 		return mysql_fetch_assoc($query);
 	}
 
-	public function get_comments()
+	public function get_()
 	{
-		$query = mysql_query('SELECT * FROM comments WHERE user_id = '.$this->user_id);
+		$query = mysql_query('SELECT * FROM  WHERE user_id = '.$this->user_id);
 		return mysql_fetch_assoc($query);
 	}
 

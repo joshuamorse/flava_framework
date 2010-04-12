@@ -7,20 +7,26 @@ $_definition = array(
 
   'fields' => array(
     'id' => array(
+      'field' => 'id',
       'type' => 'int',
       'auto_inc' => 1,
     ),
 
-    //'user_id' => array(
-      //'type' => 'int',
+    'user' => array(
+      'field' => 'user_id',
+      'type' => 'int',
 
-      //'relation' => array(
-        //'type' => 'many',
-        //'name' => 'users',
-      //),
-    //),
+      'relation' => array(
+        'type' => 'one-to-one',
+        'foreign' => array(
+          'table' => 'user',
+          'field' => 'id',
+        ),
+      ),
+    ),
     
     'comment' => array(
+      'field' => 'comment',
       'type' => 'varchar',
       'length' => 255,
     ),

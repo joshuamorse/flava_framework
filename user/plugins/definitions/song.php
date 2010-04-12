@@ -7,11 +7,13 @@ $_definition = array(
 
   'fields' => array(
     'id' => array(
+      'field' => 'id',
       'type' => 'int',
       'auto_inc' => 1,
     ),
     
     'song' => array(
+      'field' => 'song',
       'type' => 'varchar',
       'length' => 255,
     ),
