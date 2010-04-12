@@ -90,16 +90,16 @@ if($_url_match)
   # Load up any installed plugin functions.
   $_list = get_autoload_list();
 
-  foreach($_list as $_plugin_)
+  foreach($_list as $_autoloaded_plugin_info)
   {
-    if($_plugin_['config'])
+    if($_autoloaded_plugin_info['config'])
     {
-      require($_plugin_['config']);
+      require($_autoloaded_plugin_info['config']);
     }   
 
-    if($_plugin_['functions'])
+    if($_autoloaded_plugin_info['functions'])
     {
-      require($_plugin_['functions']);
+      require($_autoloaded_plugin_info['functions']);
     }
   }
 
