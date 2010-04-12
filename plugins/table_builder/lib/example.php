@@ -39,9 +39,8 @@ $_definition = array(
       'relation' => array(
         'type' => 'many-to-many',
         'foreign' => array(
-          'table' => 'song', 
+          'table' => 'user2song', 
           'field' => 'song_id', 
-          'joiner' => 'user2song', 
         ),
       ),
     ),

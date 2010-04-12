@@ -48,11 +48,16 @@ class user_base
 		return mysql_fetch_assoc($query);
 	}
 
-	public function get_()
+	public function get_comments()
 	{
-		$query = mysql_query('SELECT * FROM  WHERE user_id = '.$this->user_id);
+		$query = mysql_query('SELECT * FROM comment WHERE user_id = '.$this->user_id);
 		return mysql_fetch_assoc($query);
 	}
 
-////many_to_many_methods
+	public function get_songs()
+	{
+		$query = mysql_query('SELECT * FROM user t1, song t2, user2song jt WHERE t1.id IS NOT NULL AND tj.user_id = '.$this->user_id.' AND t1.id = tj.user_id AND t2.id = tj.song_id');
+		return mysql_fetch_assoc($query);
+	}
+
 }
