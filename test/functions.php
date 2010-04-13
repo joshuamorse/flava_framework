@@ -17,7 +17,7 @@ $user = new user_base(1);
 
 echo "\n\n";
 $comments = $user->get_comments();
-echo $comments[1]->comment;
+echo $comments[1]['comment'];
 echo "\n\n";
 //print_r($clan);
 //echo $clan->name;

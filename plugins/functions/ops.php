@@ -93,7 +93,7 @@ function build($argv)
         $_one_to_one_methods .= "\t".'public function get_'.$name.'()'."\n"; 
         $_one_to_one_methods .= "\t".'{'."\n"; 
         $_one_to_one_methods .= "\t\t".'$query = mysql_query(\'SELECT * FROM '.$data['relation']['foreign']['table'].' WHERE id = \'.$this->'.$data['field'].');'."\n"; 
-        $_one_to_one_methods .= "\t\t".'return mysql_fetch_object($query);'."\n"; 
+        $_one_to_one_methods .= "\t\t".'return mysql_fetch_assoc($query);'."\n"; 
         $_one_to_one_methods .= "\t".'}'."\n"; 
       }
 
@@ -102,7 +102,12 @@ function build($argv)
         $_one_to_many_methods .= "\t".'public function get_'.$name.'()'."\n"; 
         $_one_to_many_methods .= "\t".'{'."\n"; 
         $_one_to_many_methods .= "\t\t".'$query = mysql_query(\'SELECT * FROM '.$data['relation']['foreign']['table'].' WHERE '.$_definition['name'].'_id = \'.$this->id);'."\n"; 
-        $_one_to_many_methods .= "\t\t".'return mysql_fetch_object($query);'."\n"; 
+        $_one_to_many_methods .= "\n\t\t".'while($row = mysql_fetch_assoc($query))';
+        $_one_to_many_methods .= "\n\t\t".'{';
+        $_one_to_many_methods .= "\n\t\t\t".'$rtn[] = $row;';
+        $_one_to_many_methods .= "\n\t\t".'}';
+        $_one_to_many_methods .= "\n\n";
+        $_one_to_many_methods .= "\t\t".'return $rtn;'."\n"; 
         $_one_to_many_methods .= "\t".'}'."\n"; 
       }
 
@@ -119,7 +124,7 @@ function build($argv)
         $_many_to_many_methods .= "\t".'public function get_'.$name.'()'."\n"; 
         $_many_to_many_methods .= "\t".'{'."\n"; 
         $_many_to_many_methods .= "\t\t".'$query = mysql_query(\''.$query.'\');'."\n"; 
-        $_many_to_many_methods .= "\t\t".'return mysql_fetch_object($query);'."\n"; 
+        $_many_to_many_methods .= "\t\t".'return mysql_fetch_assoc($query);'."\n"; 
         $_many_to_many_methods .= "\t".'}'."\n"; 
       }
     }

@@ -51,25 +51,25 @@ class user_base
 	public function get_clan()
 	{
 		$query = mysql_query('SELECT * FROM clan WHERE id = '.$this->clan_id);
-		return mysql_fetch_object($query);
+		return mysql_fetch_assoc($query);
 	}
 
 	public function get_comments()
 	{
 		$query = mysql_query('SELECT * FROM comment WHERE user_id = '.$this->id);
 
-    while($row = mysql_fetch_object($query))
-    {
-      $rtn[] = $row;
-    }
+		while($row = mysql_fetch_assoc($query))
+		{
+			$rtn[] = $row;
+		}
 
-    return $rtn;
+		return $rtn;
 	}
 
 	public function get_songs()
 	{
 		$query = mysql_query('SELECT * FROM user t1, song t2, user2song jt WHERE t1.id IS NOT NULL AND tj.user_id = '.$this->user_id.' AND t1.id = tj.user_id AND t2.id = tj.song_id');
-		return mysql_fetch_object($query);
+		return mysql_fetch_assoc($query);
 	}
 
 }
