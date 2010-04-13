@@ -56,8 +56,14 @@ class user_base
 
 	public function get_comments()
 	{
-		$query = mysql_query('SELECT * FROM comment WHERE user_id = '.$this->user_id);
-		return mysql_fetch_object($query);
+		$query = mysql_query('SELECT * FROM comment WHERE user_id = '.$this->id);
+
+    while($row = mysql_fetch_object($query))
+    {
+      $rtn[] = $row;
+    }
+
+    return $rtn;
 	}
 
 	public function get_songs()

@@ -11,8 +11,13 @@ $user = new user_base(1);
 
 //echo $user->get_name();
 
+//echo "\n\n";
+//echo $user->get_clan()->name;
+//echo "\n\n";
+
 echo "\n\n";
-echo $user->get_clan()->name;
+$comments = $user->get_comments();
+echo $comments[1]->comment;
 echo "\n\n";
 //print_r($clan);
 //echo $clan->name;

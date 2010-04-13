@@ -30,5 +30,11 @@ $_definition = array(
       'type' => 'varchar',
       'length' => 255,
     ),
+
+    'slug' => array(
+      'field' => 'slug',
+      'type' => 'varchar',
+      'length' => 255,
+    ),
   ),
 );

@@ -101,7 +101,7 @@ function build($argv)
       {
         $_one_to_many_methods .= "\t".'public function get_'.$name.'()'."\n"; 
         $_one_to_many_methods .= "\t".'{'."\n"; 
-        $_one_to_many_methods .= "\t\t".'$query = mysql_query(\'SELECT * FROM '.$data['relation']['foreign']['table'].' WHERE '.$_definition['name'].'_id = \'.$this->'.$_definition['name'].'_id);'."\n"; 
+        $_one_to_many_methods .= "\t\t".'$query = mysql_query(\'SELECT * FROM '.$data['relation']['foreign']['table'].' WHERE '.$_definition['name'].'_id = \'.$this->id);'."\n"; 
         $_one_to_many_methods .= "\t\t".'return mysql_fetch_object($query);'."\n"; 
         $_one_to_many_methods .= "\t".'}'."\n"; 
       }
